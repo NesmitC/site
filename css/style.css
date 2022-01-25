@@ -1,0 +1,76 @@
+body {
+    background-image: url(../img/background2.jpg);
+    object-fit: cover;
+    font-family: Playfair Display, Arial, Helvetica, sans-serif;
+}
+
+.header {
+    padding: 10px;
+    text-align: center;
+    background-image: url(../img/background1_header1.jpg);
+    opacity: 0.8;  /* прозрачность */
+    color: rgb(245, 219, 219);
+}
+
+.header h1 {
+    font-size: 35px;
+}
+
+.navbar {
+    overflow: hidden;
+    background-image: url(../img/background1_header1.jpg);
+    opacity: 0.8;  /* прозрачность */
+}
+
+/* Style the navigation bar links */
+.navbar a {
+    float: left;
+    display: block;
+    color: rgb(250, 235, 235);
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+.navbar form {
+    float: right;
+    align-self: center;
+}
+
+.base_text {
+    text-align: justify;
+    padding: 10px 20px;
+    color: rgb(250, 235, 235);
+    margin-top: 0.5em; /* Отступ сверху */
+    margin-bottom: 1em; /* Отступ снизу */
+}
+
+/* для страницы me */
+.container {
+    width: 1200px;
+    margin: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    outline: 1px solid red;
+}
+
+.me-title {
+    color: rgb(245, 219, 219);
+    outline: 1px solid yellow;
+    margin: 20px;
+}
+
+.me-list {
+    color: rgb(245, 219, 219);
+    outline: 1px solid yellow;
+}
+
+.me-image {
+    display: block;
+    max-width: 250px;
+    padding: 20px 5px;
+    outline: 1px solid yellow;
+}
+
+
+
