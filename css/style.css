@@ -1,76 +1,171 @@
+/* Стили для body и html */
+html,
 body {
-    background-image: url(../img/background2.jpg);
-    object-fit: cover;
-    font-family: Playfair Display, Arial, Helvetica, sans-serif;
+    height: 100%;
+    font-family: Arial, sans-serif;
 }
 
-.header {
-    padding: 10px;
-    text-align: center;
-    background-image: url(../img/background1_header1.jpg);
-    opacity: 0.8;  /* прозрачность */
-    color: rgb(245, 219, 219);
-}
-
-.header h1 {
-    font-size: 35px;
-}
-
-.navbar {
-    overflow: hidden;
-    background-image: url(../img/background1_header1.jpg);
-    opacity: 0.8;  /* прозрачность */
-}
-
-/* Style the navigation bar links */
-.navbar a {
-    float: left;
-    display: block;
-    color: rgb(250, 235, 235);
-    text-align: center;
-    padding: 14px 20px;
-    text-decoration: none;
-}
-
-.navbar form {
-    float: right;
-    align-self: center;
-}
-
-.base_text {
-    text-align: justify;
-    padding: 10px 20px;
-    color: rgb(250, 235, 235);
-    margin-top: 0.5em; /* Отступ сверху */
-    margin-bottom: 1em; /* Отступ снизу */
-}
-
-/* для страницы me */
-.container {
-    width: 1200px;
-    margin: 25px;
+/* Основной контейнер страницы */
+.page {
+    min-height: 100vh;
     display: flex;
-    flex-wrap: wrap;
-    outline: 1px solid red;
+    justify-content: center;
+    align-items: center;
+    background: #2c0101;
 }
 
-.me-title {
-    color: rgb(245, 219, 219);
-    outline: 1px solid yellow;
-    margin: 20px;
+/* Контейнер для фона и эмблем */
+.background-container {
+    position: relative;
+    width: 1440px;
+    /* Фиксированная ширина макета */
+    max-width: 100%;
+    /* Не больше 100% ширины экрана */
+    height: auto;
+    margin: 0 auto;
+    /* Центрирование */
 }
 
-.me-list {
-    color: rgb(245, 219, 219);
-    outline: 1px solid yellow;
-}
-
-.me-image {
+/* Само фоновое изображение */
+.background-image {
+    width: 100%;
+    height: auto;
     display: block;
-    max-width: 250px;
-    padding: 20px 5px;
-    outline: 1px solid yellow;
 }
 
+/* Контейнер для эмблем - абсолютное позиционирование относительно фона */
+.emblems-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
 
+/* Общие стили для всех эмблем */
+.emblem {
+    position: absolute;
+    width: 4.16%;
+    /* 60px / 1440px ≈ 4.16% */
+    height: auto;
+    cursor: pointer;
+    z-index: 1;
+    transition: all 0.3s ease-in-out;
+}
 
+/* Эффект при наведении на эмблему */
+.emblem:hover {
+    transform: scale(1.5);
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+    z-index: 2;
+}
+
+/* Позиционирование эмблем в ПРОЦЕНТАХ относительно ширины 1440px */
+.emblem-1 {
+    top: 30%;
+    left: 16%;
+    /* 230px / 1440px ≈ 16% */
+}
+
+.emblem-2 {
+    top: 30%;
+    left: 48%;
+    /* 691px / 1440px ≈ 48% */
+}
+
+.emblem-3 {
+    top: 30%;
+    right: 16%;
+    /* 230px / 1440px ≈ 16% */
+}
+
+.emblem-4 {
+    bottom: 10%;
+    /* 100px / 1440px ≈ 7% */
+    left: 27%;
+    /* 389px / 1440px ≈ 27% */
+}
+
+.emblem-5 {
+    bottom: 10%;
+    /* 100px / 1440px ≈ 7% */
+    right: 25%;
+    /* 360px / 1440px ≈ 25% */
+}
+
+/* ----------------------------------------------------------------- */
+
+/* Стили для анимации перехода */
+.transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #8B0000 0%, #FF0000 50%, #8B0000 100%);
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.transition-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Анимация исчезания страницы */
+.page.fade-out {
+    animation: pageFadeOut 1.2s ease-in-out forwards;
+}
+
+@keyframes pageFadeOut {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+
+    50% {
+        transform: scale(1.1);
+        filter: blur(5px);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.3);
+        filter: blur(15px);
+    }
+}
+
+/* Анимация для эмблемы при клике */
+.emblem-clicked {
+    animation: emblemExplode 1s ease-in-out forwards;
+    z-index: 10000 !important;
+}
+
+@keyframes emblemExplode {
+    0% {
+        transform: scale(1);
+        filter: brightness(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+        opacity: 1;
+    }
+
+    30% {
+        transform: scale(2.5);
+        filter: brightness(3) drop-shadow(0 0 30px rgba(255, 0, 0, 1));
+        opacity: 0.8;
+    }
+
+    60% {
+        transform: scale(4);
+        filter: brightness(5) drop-shadow(0 0 50px rgba(255, 215, 0, 1));
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(8);
+        filter: brightness(8) drop-shadow(0 0 80px rgba(255, 255, 255, 1));
+        opacity: 0;
+    }
+}

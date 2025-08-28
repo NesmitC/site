@@ -1,0 +1,37 @@
+/* Сброс стандартных отступов */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .emblem {
+        width: 40px;
+    }
+
+    .emblem-1 {
+        left: calc(230px * 0.6);
+        top: 30%;
+    }
+
+    .emblem-2 {
+        left: calc(691px * 0.6);
+        top: 30%;
+    }
+
+    .emblem-3 {
+        right: calc(230px * 0.6);
+        top: 30%;
+    }
+
+    .emblem-4 {
+        left: calc(389px * 0.6);
+        bottom: 80px;
+    }
+
+    .emblem-5 {
+        right: calc(360px * 0.6);
+        bottom: 80px;
+    }
+}
