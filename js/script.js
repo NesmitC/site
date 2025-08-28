@@ -1,31 +1,49 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Функция для обновления счета
+    function updateScoreDisplay() {
+        const savedScore = localStorage.getItem('userScore');
+        const scoreContainer = document.querySelector('.score-container');
+        const scoreValue = document.querySelector('.score-value');
+
+        console.log('Текущий счет:', savedScore); // Отладка
+
+        if (scoreContainer && scoreValue) {
+            if (savedScore && savedScore > 0) {
+                scoreValue.textContent = savedScore;
+                scoreContainer.style.display = 'block';
+                console.log('Счет отображен:', savedScore);
+            } else {
+                scoreContainer.style.display = 'none';
+                console.log('Счет скрыт');
+            }
+        } else {
+            console.error('Элементы счета не найдены!');
+        }
+    }
+
+    // Проверяем счет при загрузке
+    updateScoreDisplay();
+
+    // Также проверяем при возвращении на страницу
+    window.addEventListener('pageshow', updateScoreDisplay);
+
     const emblems = document.querySelectorAll('.emblem');
     const transitionOverlay = document.querySelector('.transition-overlay');
     const page = document.querySelector('.page');
 
     // Функция для плавного перехода на другую страницу
     function navigateToPage(pageUrl, emblem) {
-        // Блокируем дальнейшие клики
         emblems.forEach(e => e.style.pointerEvents = 'none');
-
-        // Добавляем класс анимации для эмблемы
         emblem.classList.add('emblem-clicked');
 
-        // Запускаем анимацию исчезания страницы
         setTimeout(() => {
             page.classList.add('fade-out');
-
-            // Активируем красный overlay
             setTimeout(() => {
                 transitionOverlay.classList.add('active');
-
-                // Переходим на новую страницу после завершения анимации
                 setTimeout(() => {
                     window.location.href = pageUrl;
                 }, 800);
-
             }, 400);
-
         }, 300);
     }
 
@@ -33,7 +51,6 @@ document.addEventListener('DOMContentLoaded', function () {
     emblems.forEach(emblem => {
         emblem.addEventListener('click', function (e) {
             e.preventDefault();
-
             const targetPage = this.getAttribute('data-page');
             if (targetPage) {
                 navigateToPage(targetPage, this);
@@ -41,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Предзагрузка страниц для более плавного перехода
+    // Предзагрузка страниц
     function preloadPages() {
         emblems.forEach(emblem => {
             const pageUrl = emblem.getAttribute('data-page');
@@ -55,6 +72,5 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Запускаем предзагрузку после загрузки страницы
     window.addEventListener('load', preloadPages);
 });

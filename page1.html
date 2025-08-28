@@ -5,57 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Страница 1</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-            color: white;
-            font-family: Arial, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            animation: fadeIn 1s ease-in-out forwards;
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }
-
-        .content {
-            text-align: center;
-            max-width: 600px;
-            padding: 40px;
-        }
-
-        .back-button {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 15px 30px;
-            background: linear-gradient(135deg, #8B0000 0%, #FF0000 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: transform 0.3s ease;
-        }
-
-        .back-button:hover {
-            transform: scale(1.05);
-        }
-    </style>
+    <!-- Подключаем файл стилей -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/reset.css">
 </head>
 
+
 <body>
-    <div class="content">
-        <h1>Страница 1 - "ПОВЕСТЬ о ПЕТРЕ и ФЕВРОНИИ"</h1>
-        <p>Это содержимое, которое открылось после перехода через герб 1.</p>
-        <a href="index.html" class="back-button">Вернуться назад</a>
+    <div class="page1">
+        <div class="header-container">
+            <a href="index.html" class="back-button">На главную</a>
+            <input type="text" class="book-input" placeholder="Напиши название произведения" maxlength="100"
+                style="display: none;">
+            <button class="check-button" style="display: none;">Проверить</button>
+        </div>
+
+        <div class="result-message" style="display: none;"></div>
+
+        <div class="coffins-container">
+            <img src="images/coffin.png" alt="гроб 1" class="coffin coffin-1">
+            <img src="images/coffin.png" alt="гроб 2" class="coffin coffin-2">
+        </div>
+
+
     </div>
+    <!-- Подключаем анимацию для гроба -->
+    <script src="js/coffin-animation.js"></script>
 </body>
 
 </html>

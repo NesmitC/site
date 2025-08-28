@@ -169,3 +169,187 @@ body {
         opacity: 0;
     }
 }
+
+/* ----------------------------------------------------------------- */
+.page1 {
+    margin: 0;
+    padding: 0;
+    /* background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); */
+    background: url(../images/room_in_castle.webp) no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.back-button {
+    display: inline-block;
+    margin: 20px;
+    padding: 15px 20px;
+    background: linear-gradient(135deg, #8B0000 0%, #FF0000 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 1000;
+}
+
+/* Контейнер для гробов */
+.coffins-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Общие стили для всех гробов */
+.coffin {
+    position: absolute;
+    width: 150px;
+    height: auto;
+    z-index: 1;
+}
+
+.coffin-1 {
+    bottom: 5%;
+    right: 30%;
+}
+
+.coffin-2 {
+    bottom: 0;
+    right: 2%;
+    transition: all 3s ease-in-out;
+    /* Плавное движение */
+}
+
+/* Класс для анимации */
+.coffin-2.move-to-coffin1 {
+    bottom: 2%;
+    right: 20%;
+}
+
+/* ----------------------------------------------------------------- */
+.header-container {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 10000;
+}
+
+.back-button {
+    display: inline-block;
+    padding: 15px 20px;
+    background: linear-gradient(135deg, #8B0000 0%, #FF0000 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.book-input {
+    padding: 15px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #000000;
+    min-width: 300px;
+    transition: opacity 0.5s ease;
+}
+
+.book-input::placeholder {
+    color: #727070;
+    font-style: italic;
+}
+
+.check-button {
+    padding: 15px 25px;
+    background: linear-gradient(135deg, #006400 0%, #008000 100%);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* ----------------------------------------------------------------- */
+.result-message {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 15px;
+    animation: fadeInOut 2s ease;
+}
+
+.result-message.correct {
+    background: #4CAF50;
+    color: white;
+}
+
+.result-message.incorrect {
+    background: #f44336;
+    color: white;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    20% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    80% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+/* ----------------------------------------------------------------- */
+.score-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 15px 30px;
+    border-radius: 10px;
+    border: 2px solid gold;
+}
+
+.score-title {
+    color: white;
+    margin: 0;
+    font-size: 24px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.score-value {
+    color: gold;
+    font-weight: bold;
+}
